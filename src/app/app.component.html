@@ -1,12 +1,3 @@
-<main *ngIf="allDataFetched">
-  <h1>Pokedex</h1>
-  {{pokemonExemple.id}}
-  {{pokemonExemple.name}}
-  {{pokemonExemple.weight}}
-  <ul>
-    <li *ngFor="let pokemon of pokeAPI.results">
-      {{pokemon.pokemon?.id}}
-      {{pokemon.name}}
-    </li>
-  </ul>
+<main>
+  <router-outlet></router-outlet>
 </main>
