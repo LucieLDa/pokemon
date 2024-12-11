@@ -1,7 +1,4 @@
 <h1>Pokedex</h1>
-{{pokemonExemple.id}}
-{{pokemonExemple.name}}
-{{pokemonExemple.weight}}
 <ul>
   <li *ngFor="let pokemon of pokeAPI.results">
     <app-pokemon-box [result]="pokemon"></app-pokemon-box>

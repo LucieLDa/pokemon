@@ -16,25 +16,21 @@ export class PokedexComponent {
   allDataFetched: boolean = false;
 
   pokeAPI : PokeAPI = {count : 0, next : "", results : []};
-  pokemonExemple : Pokemon = {id: 0, name: "", weight: 0};
 
   ngOnInit() : void {
     this.pokedexService.getAllPokemon().subscribe(data => {
       this.pokeAPI = data;
       this.loadPokemonToList();
-    });
-    this.pokedexService.getPokemonById(132).subscribe(data => {
-      this.pokemonExemple = data;
+      this.allDataFetched = true;
     });
   }
 
-  loadPokemonToList() : void{
+  loadPokemonToList() {
     this.pokeAPI.results.forEach((pokemon) =>{
       this.pokedexService.getPokemonByName(pokemon.name).subscribe(data => {
         pokemon.pokemon = data;
       });
     }
     );
-    this.allDataFetched = true;
   }
 }

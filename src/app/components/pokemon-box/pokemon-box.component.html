@@ -1,2 +1,7 @@
-{{result.pokemon?.id}}
-{{result.name}}
+<div class="pokemon-container">
+    <span class="pokemon-id">{{idStandard(result.pokemon?.id)}}</span>
+    <div class="pokemon-image-container"><img [src]="result.pokemon?.sprites?.front_default" alt=""></div>
+    <div class="pokemon-info">
+        {{result.name}}
+    </div>
+</div>

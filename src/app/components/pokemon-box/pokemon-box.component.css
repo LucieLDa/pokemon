@@ -1,0 +1,9 @@
+.pokemon-image-container {
+    height: 100px;
+    width: 100px;
+    background-color: lightgray;
+}
+
+.pokemon-info {
+    text-align: center;
+}

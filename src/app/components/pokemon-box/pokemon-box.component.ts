@@ -14,4 +14,9 @@ export class PokemonBoxComponent {
 
   @Input()
   result !: Results;
+
+  //Standardise the id to 4 numbers
+  idStandard(id ?: number) : String {
+    return '#'+('000' + id).slice(-4);
+  }
 }
