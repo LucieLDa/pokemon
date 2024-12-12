@@ -7,7 +7,7 @@ import { catchError, Observable, of, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class PokemonService {
-  private pokeApiUrl : string = 'https://pokeapi.co/api/v2/pokemon';
+  private pokeApiUrl : string = 'https://pokeapi.co/api/v2/';
 
   private http = inject(HttpClient);
 
@@ -17,7 +17,7 @@ export class PokemonService {
 
   getAllPokemon(): Observable<PokeAPI> {
     return this.http
-      .get<PokeAPI>(this.pokeApiUrl)
+      .get<PokeAPI>(`${this.pokeApiUrl}pokemon-species?limit=100&offset=0`)
       .pipe(catchError(this.handleError<PokeAPI>('getAllPokemon')));
     //.get<PokeAPI>(`${this.pokeApiUrl}?limit=100000&offset=0`)
   }
@@ -26,7 +26,7 @@ export class PokemonService {
 
   getPokemonById(id: number): Observable<Pokemon>{
     return this.http
-      .get<Pokemon>(`${this.pokeApiUrl}/${id}`)
+      .get<Pokemon>(`${this.pokeApiUrl}pokemon/${id}`)
       .pipe(catchError(this.handleError<Pokemon>('getPokemonById')));
   }
 
@@ -34,7 +34,7 @@ export class PokemonService {
 
   getPokemonByName(name: string): Observable<Pokemon>{
     return this.http
-      .get<Pokemon>(`${this.pokeApiUrl}/${name}`)
+      .get<Pokemon>(`${this.pokeApiUrl}pokemon/${name}`)
       .pipe(catchError(this.handleError<Pokemon>('getPokemonById')));
   }
 

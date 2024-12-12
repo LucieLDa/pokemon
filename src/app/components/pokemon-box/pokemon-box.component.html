@@ -1,7 +1,7 @@
 <div class="pokemon-container">
-    <span class="pokemon-id">{{idStandard(result.pokemon?.id)}}</span>
-    <div class="pokemon-image-container"><img [src]="result.pokemon?.sprites?.front_default" alt=""></div>
+    <span class="pokemon-id">{{idStandard(pokemon.id)}}</span>
+    <div class="pokemon-image-container"><img [src]="pokemon.sprites.front_default" alt=""></div>
     <div class="pokemon-info">
-        {{result.name}}
+        {{pokemon.name}}
     </div>
 </div>

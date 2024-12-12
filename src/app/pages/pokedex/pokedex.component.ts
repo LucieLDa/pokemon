@@ -20,15 +20,17 @@ export class PokedexComponent {
   ngOnInit() : void {
     this.pokedexService.getAllPokemon().subscribe(data => {
       this.pokeAPI = data;
-      this.loadPokemonToList();
-      this.allDataFetched = true;
+      this.loadPokemonToList(data.results.length);
     });
   }
 
-  loadPokemonToList() {
+  loadPokemonToList(lastId : number) {
     this.pokeAPI.results.forEach((pokemon) =>{
       this.pokedexService.getPokemonByName(pokemon.name).subscribe(data => {
         pokemon.pokemon = data;
+        if(data.id == lastId) {
+          this.allDataFetched = true;
+        }
       });
     }
     );
