@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Pokemon, Results } from '../../models/pokeAPI.interface';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-box',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './pokemon-box.component.html',
   styleUrl: './pokemon-box.component.css'
 })
