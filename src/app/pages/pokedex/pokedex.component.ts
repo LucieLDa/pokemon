@@ -18,17 +18,23 @@ export class PokedexComponent {
   pokeAPI : PokeAPI = {count : 0, next : "", results : []};
 
   ngOnInit() : void {
-    this.pokedexService.getAllPokemon().subscribe(data => {
+    //First id not included, need to be a value -1 from intended
+    const firstId : number = 0;
+    const lastId : number = 400;
+    this.pokedexService.getAllPokemonSpecies(firstId, lastId).subscribe(data => {
       this.pokeAPI = data;
-      this.loadPokemonToList(data.results.length);
+      this.loadPokemonToList(lastId);
     });
   }
 
+  //Add info of the individual pokemons to the results obtained from api
+
   loadPokemonToList(lastId : number) {
     this.pokeAPI.results.forEach((pokemon) =>{
-      this.pokedexService.getPokemonByName(pokemon.name).subscribe(data => {
+      //extract the id from the url
+      this.pokedexService.getPokemonById(Number(pokemon.url.split('/').slice(-2,-1)[0])).subscribe(data => {
         pokemon.pokemon = data;
-        if(data.id == lastId) {
+        if(data.id >= lastId) {
           this.allDataFetched = true;
         }
       });

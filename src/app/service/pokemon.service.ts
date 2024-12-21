@@ -15,11 +15,18 @@ export class PokemonService {
 
   //Get all the pokemons from the API
 
-  getAllPokemon(): Observable<PokeAPI> {
+  getAllPokemon(offset: number, limit: number): Observable<PokeAPI> {
     return this.http
-      .get<PokeAPI>(`${this.pokeApiUrl}pokemon-species?limit=100&offset=0`)
+      .get<PokeAPI>(`${this.pokeApiUrl}pokemon?limit=${limit}&offset=${offset}`)
       .pipe(catchError(this.handleError<PokeAPI>('getAllPokemon')));
-    //.get<PokeAPI>(`${this.pokeApiUrl}?limit=100000&offset=0`)
+  }
+
+  //Get all the pokemons species from the API
+
+  getAllPokemonSpecies(offset: number, limit: number): Observable<PokeAPI> {
+    return this.http
+      .get<PokeAPI>(`${this.pokeApiUrl}pokemon-species?limit=${limit}&offset=${offset}`)
+      .pipe(catchError(this.handleError<PokeAPI>('getAllPokemonSpecies')));
   }
 
   //Get a specific Pokemon by it's id
