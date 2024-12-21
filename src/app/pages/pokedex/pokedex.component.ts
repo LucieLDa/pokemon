@@ -20,7 +20,7 @@ export class PokedexComponent {
   ngOnInit() : void {
     //First id not included, need to be a value -1 from intended
     const firstId : number = 0;
-    const lastId : number = 400;
+    const lastId : number = 151;
     this.pokedexService.getAllPokemonSpecies(firstId, lastId).subscribe(data => {
       this.pokeAPI = data;
       this.loadPokemonToList(lastId);

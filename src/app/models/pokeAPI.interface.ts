@@ -15,8 +15,18 @@ export interface Pokemon {
     name: string;
     weight: number;
     sprites: Sprites;
+    types: Types[];
 }
 
 export interface Sprites {
     front_default: string;
+}
+
+export interface Types {
+    slot: number;
+    type: Type;
+}
+
+export interface Type {
+    name: string;
 }
