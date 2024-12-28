@@ -1,10 +1,14 @@
 <div class="pokemon-container">
     <span class="pokemon-id">{{idStandard(pokemon.id)}}</span>
-    <div class="pokemon-image-container"><img [src]="pokemon.sprites.front_default" alt=""></div>
+    <div class="pokemon-image-container">
+        <a [routerLink]="['/pokemon', pokemon.name]">
+            <img [src]="pokemon.sprites.front_default" alt="">
+        </a>
+    </div>
     <div class="pokemon-info">
-        <a [routerLink]="['/pokemon', pokemon.name]">{{pokemon.name}}</a>
-        <ul>
-            <li *ngFor="let type of pokemon.types">
+        <h2 class="pokemon-name">{{pokemon.name}}</h2>
+        <ul class="pokemon-types">
+            <li class="type" [ngClass]="type.type.name" *ngFor="let type of pokemon.types">
                 {{type.type.name}}
             </li>
         </ul>
