@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { PokeAPI, Pokemon} from '../models/pokeAPI.interface';
+import { PokeAPI, Pokemon, PokemonSpecies} from '../models/pokeAPI.interface';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
@@ -43,6 +43,22 @@ export class PokemonService {
     return this.http
       .get<Pokemon>(`${this.pokeApiUrl}pokemon/${name}`)
       .pipe(catchError(this.handleError<Pokemon>('getPokemonById')));
+  }
+
+  //Get a specific Pokemon Species by it's id
+
+  getPokemonSpeciesById(id: number): Observable<PokemonSpecies>{
+    return this.http
+      .get<PokemonSpecies>(`${this.pokeApiUrl}pokemon-species/${id}`)
+      .pipe(catchError(this.handleError<PokemonSpecies>('getPokemonById')));
+  }
+
+  //Get a specific Pokemon Species by it's name
+
+  getPokemonSpeciesByName(name: string): Observable<PokemonSpecies>{
+    return this.http
+      .get<PokemonSpecies>(`${this.pokeApiUrl}pokemon-species/${name}`)
+      .pipe(catchError(this.handleError<PokemonSpecies>('getPokemonById')));
   }
 
   /**

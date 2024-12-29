@@ -1,32 +1,43 @@
 import { Component, inject, Input } from '@angular/core';
-import { Pokemon } from '../../models/pokeAPI.interface';
+import { Pokemon, PokemonSpecies } from '../../models/pokeAPI.interface';
 import { PokemonService } from '../../service/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pokemon-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './pokemon-page.component.html',
   styleUrl: './pokemon-page.component.css'
 })
 export class PokemonPageComponent {
   //This page shows all the info of a pokemon species
   private pokedexService = inject(PokemonService);
-  pokemon !: Pokemon;
+  pokemonSpecies !: PokemonSpecies;
   selectedId !: any;
 
   constructor(private route: ActivatedRoute, private router: Router){}
 
   ngOnInit(){
     this.selectedId = this.route.snapshot.paramMap.get('id');
-    this.pokedexService.getPokemonByName(this.selectedId).subscribe(data => {
-      const findPokemon : Pokemon | undefined = data;
+    this.pokedexService.getPokemonSpeciesByName(this.selectedId).subscribe(data => {
+      const findPokemon : PokemonSpecies | undefined = data;
       if(findPokemon !== undefined){
-        this.pokemon = findPokemon;
+        this.pokemonSpecies = findPokemon;
+        this.loadPokemonToVariety();
       }else{
         this.router.navigate(['']);
       }
+    });
+  }
+
+  //Get pokemon info of each variety of a pokemon
+  loadPokemonToVariety() {
+    this.pokemonSpecies.varieties.forEach((variety) =>{
+      this.pokedexService.getPokemonById(Number(variety.pokemon.url.split('/').slice(-2,-1)[0])).subscribe(data => {
+        variety.pokemonInfo = data;
+      })
     });
   }
 }

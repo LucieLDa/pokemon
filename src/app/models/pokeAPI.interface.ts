@@ -18,6 +18,18 @@ export interface Pokemon {
     types: Types[];
 }
 
+export interface PokemonSpecies {
+    id: number;
+    name: String;
+    varieties: Variety[];
+}
+
+export interface Variety {
+    is_default: boolean;
+    pokemon: Results;
+    pokemonInfo: Pokemon;
+}
+
 export interface Sprites {
     front_default: string;
 }
