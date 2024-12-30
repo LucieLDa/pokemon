@@ -3,11 +3,12 @@ import { Pokemon, PokemonSpecies } from '../../models/pokeAPI.interface';
 import { PokemonService } from '../../service/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {MatTabsModule} from '@angular/material/tabs'; 
 
 @Component({
   selector: 'app-pokemon-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatTabsModule],
   templateUrl: './pokemon-page.component.html',
   styleUrl: './pokemon-page.component.css'
 })
