@@ -1,0 +1,14 @@
+img {
+    height: 100px;
+    width: 100px;
+}
+
+.pokemon-types {
+    text-transform: capitalize;
+    display: flex;
+}
+
+.type {
+    padding: 3px 10px;
+    border-radius: 5px;
+}

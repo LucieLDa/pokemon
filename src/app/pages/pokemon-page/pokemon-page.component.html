@@ -6,7 +6,7 @@
             {{pokemon.pokemon.name}}
             <img [src]="pokemon.pokemonInfo.sprites.front_default" alt="">
         </ng-template>
-        {{pokemon.pokemon.name}}
+        <app-pokemon-variety-info [pokemon]="pokemon.pokemonInfo"></app-pokemon-variety-info>
     </mat-tab>
 </mat-tab-group>
   

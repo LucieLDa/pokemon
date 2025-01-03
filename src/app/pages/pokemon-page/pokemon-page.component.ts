@@ -1,14 +1,15 @@
 import { Component, inject, Input } from '@angular/core';
-import { Pokemon, PokemonSpecies } from '../../models/pokeAPI.interface';
+import { Pokemon, PokemonSpecies, Variety } from '../../models/pokeAPI.interface';
 import { PokemonService } from '../../service/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs'; 
+import { PokemonVarietyInfoComponent } from '../../components/pokemon-variety-info/pokemon-variety-info.component';
 
 @Component({
   selector: 'app-pokemon-page',
   standalone: true,
-  imports: [CommonModule, MatTabsModule],
+  imports: [CommonModule, MatTabsModule, PokemonVarietyInfoComponent],
   templateUrl: './pokemon-page.component.html',
   styleUrl: './pokemon-page.component.css'
 })

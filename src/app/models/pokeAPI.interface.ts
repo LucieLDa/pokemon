@@ -16,6 +16,7 @@ export interface Pokemon {
     weight: number;
     sprites: Sprites;
     types: Types[];
+    stats: Stat[];
 }
 
 export interface PokemonSpecies {
@@ -41,4 +42,8 @@ export interface Types {
 
 export interface Type {
     name: string;
+}
+
+export interface Stat {
+    base_stat: Number;
 }
