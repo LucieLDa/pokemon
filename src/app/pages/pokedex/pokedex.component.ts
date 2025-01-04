@@ -3,11 +3,12 @@ import { PokemonService } from '../../service/pokemon.service';
 import { PokeAPI, Pokemon } from '../../models/pokeAPI.interface';
 import { CommonModule } from '@angular/common';
 import { PokemonBoxComponent } from '../../components/pokemon-box/pokemon-box.component';
+import {MatPaginatorModule} from '@angular/material/paginator'; 
 
 @Component({
   selector: 'app-pokedex',
   standalone: true,
-  imports: [CommonModule, PokemonBoxComponent],
+  imports: [CommonModule, PokemonBoxComponent, MatPaginatorModule],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.css'
 })
@@ -17,10 +18,19 @@ export class PokedexComponent {
 
   pokeAPI : PokeAPI = {count : 0, next : "", results : []};
 
+  //Pagination
+  currentPage: number = 0;
+  itemsPerPage: number = 10;
+  totalItems: number = 151;
+
   ngOnInit() : void {
+    this.fetchData();
+  }
+
+  fetchData() {
     //First id not included, need to be a value -1 from intended
-    const firstId : number = 0;
-    const lastId : number = 151;
+    const firstId : number = this.currentPage * this.itemsPerPage;
+    const lastId : number = this.itemsPerPage;
     this.pokedexService.getAllPokemonSpecies(firstId, lastId).subscribe(data => {
       this.pokeAPI = data;
       this.loadPokemonToList(lastId);
@@ -40,5 +50,11 @@ export class PokedexComponent {
       });
     }
     );
+  }
+
+  onPageChange(e: any): void {
+    this.currentPage = e.pageIndex;
+    this.allDataFetched = false;
+    this.fetchData();
   }
 }
