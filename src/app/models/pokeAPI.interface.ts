@@ -13,6 +13,7 @@ export interface Results {
 export interface Pokemon {
     id: number;
     name: string;
+    specie_name: string;
     weight: number;
     sprites: Sprites;
     types: Types[];

@@ -1,6 +1,7 @@
-# Pokemon
+# Pokedex
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6. The goal of this project is to create a website listing all the pokemons and display their information. This project uses [PokeAPI](https://pokeapi.co/).
+![screenshot](screenshot/pokedexPage.png)
 
 ## Development server
 

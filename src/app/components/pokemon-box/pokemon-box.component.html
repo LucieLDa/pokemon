@@ -1,12 +1,12 @@
-<div class="pokemon-container">
+<div class="pokemon-container" *ngIf="pokemon !== undefined">
     <span class="pokemon-id">{{idStandard(pokemon.id)}}</span>
     <div class="pokemon-image-container">
-        <a [routerLink]="['/pokemon', pokemon.name]">
+        <a [routerLink]="['/pokemon', pokemon.specie_name]">
             <img [src]="pokemon.sprites.front_default" alt="">
         </a>
     </div>
     <div class="pokemon-info">
-        <h2 class="pokemon-name">{{pokemon.name}}</h2>
+        <h2 class="pokemon-name">{{pokemon.specie_name}}</h2>
         <ul class="pokemon-types">
             <li class="type" [ngClass]="type.type.name" *ngFor="let type of pokemon.types">
                 {{type.type.name}}

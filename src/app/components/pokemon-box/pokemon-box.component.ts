@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Pokemon, Results } from '../../models/pokeAPI.interface';
+import { Pokemon, PokemonSpecies, Results } from '../../models/pokeAPI.interface';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PokemonBoxComponent {
   @Input()
-  pokemon !: Pokemon;
+  pokemon ?: Pokemon;
 
   //Standardise the id to 4 numbers
   idStandard(id ?: number) : String {

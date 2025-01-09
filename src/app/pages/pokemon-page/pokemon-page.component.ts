@@ -18,6 +18,7 @@ export class PokemonPageComponent {
   private pokedexService = inject(PokemonService);
   pokemonSpecies !: PokemonSpecies;
   selectedId !: any;
+  allDataFetched: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router){}
 
@@ -36,9 +37,15 @@ export class PokemonPageComponent {
 
   //Get pokemon info of each variety of a pokemon
   loadPokemonToVariety() {
+    let total = this.pokemonSpecies.varieties.length;
+    let count = 0;
     this.pokemonSpecies.varieties.forEach((variety) =>{
       this.pokedexService.getPokemonById(Number(variety.pokemon.url.split('/').slice(-2,-1)[0])).subscribe(data => {
         variety.pokemonInfo = data;
+        count++;
+        if(count == total){
+          this.allDataFetched = true;
+        }
       })
     });
   }

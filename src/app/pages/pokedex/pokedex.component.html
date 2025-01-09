@@ -1,13 +1,19 @@
-<h1>Pokedex</h1>
-<ul *ngIf="allDataFetched">
-  <li *ngFor="let pokemon of pokeAPI.results">
-    <app-pokemon-box [pokemon]="pokemon.pokemon"></app-pokemon-box>
-  </li>
-</ul>
+<div *ngIf="allDataFetched">
+  <h1>Pokedex</h1>
+  <mat-paginator
+    [pageIndex]="currentPage"
+    [length]="totalItems"
+    [pageSize]="itemsPerPage"
+    [showFirstLastButtons]=true
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onPageChange($event)"
+  ></mat-paginator>
+  <ul>
+    <li *ngFor="let pokemon of currentPokemonToShow">
+      <app-pokemon-box [pokemon]="pokemon.pokemon"></app-pokemon-box>
+    </li>
+  </ul>
+</div>
 
-<mat-paginator
-  [pageIndex]="currentPage"
-  [length]="totalItems"
-  [pageSize]="itemsPerPage"
-  (page)="onPageChange($event)"
-></mat-paginator>
+<mat-spinner *ngIf="!allDataFetched"></mat-spinner>
+

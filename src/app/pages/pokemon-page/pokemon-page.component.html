@@ -1,12 +1,14 @@
-<h1>{{pokemonSpecies.name}}</h1>
-<p>This page is under construction</p>
-<mat-tab-group>
-    <mat-tab *ngFor="let pokemon of pokemonSpecies.varieties">
-        <ng-template mat-tab-label class="tab-label">
-            {{pokemon.pokemon.name}}
-            <img [src]="pokemon.pokemonInfo.sprites.front_default" alt="">
-        </ng-template>
-        <app-pokemon-variety-info [pokemon]="pokemon.pokemonInfo"></app-pokemon-variety-info>
-    </mat-tab>
-</mat-tab-group>
+<div *ngIf="pokemonSpecies !== undefined">
+    <h1>{{pokemonSpecies.name}}</h1>
+    <p>This page is under construction</p>
+    <mat-tab-group *ngIf="allDataFetched">
+        <mat-tab *ngFor="let pokemon of pokemonSpecies.varieties">
+            <ng-template mat-tab-label class="tab-label">
+                {{pokemon.pokemon.name}}
+                <img [src]="pokemon.pokemonInfo.sprites.front_default" alt="">
+            </ng-template>
+            <app-pokemon-variety-info [pokemon]="pokemon.pokemonInfo"></app-pokemon-variety-info>
+        </mat-tab>
+    </mat-tab-group>
+</div>
   

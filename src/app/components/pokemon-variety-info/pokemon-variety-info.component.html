@@ -1,19 +1,21 @@
-<div class="pokemon-image-container">
-    <img [src]="pokemon.sprites.front_default" alt="">
-</div>
-<div class="pokemon-info">
-    <h2 class="pokemon-name">{{pokemon.name}}</h2>
-    <ul class="pokemon-types">
-        <li class="type" [ngClass]="type.type.name" *ngFor="let type of pokemon.types">
-            {{type.type.name}}
-        </li>
-    </ul>
-</div>
-<div class="pokemon-stat">
-    HP : {{pokemon.stats[0].base_stat}}
-    Attack : {{pokemon.stats[1].base_stat}}
-    Defense : {{pokemon.stats[2].base_stat}}
-    Special Attack : {{pokemon.stats[3].base_stat}}
-    Special Defense : {{pokemon.stats[4].base_stat}}
-    Speed : {{pokemon.stats[5].base_stat}}
+<div *ngIf="pokemon !== undefined">
+    <div class="pokemon-image-container">
+        <img [src]="pokemon.sprites.front_default" alt="">
+    </div>
+    <div class="pokemon-info">
+        <h2 class="pokemon-name">{{pokemon.name}}</h2>
+        <ul class="pokemon-types">
+            <li class="type" [ngClass]="type.type.name" *ngFor="let type of pokemon.types">
+                {{type.type.name}}
+            </li>
+        </ul>
+    </div>
+    <div class="pokemon-stat">
+        HP : {{pokemon.stats[0].base_stat}}
+        Attack : {{pokemon.stats[1].base_stat}}
+        Defense : {{pokemon.stats[2].base_stat}}
+        Special Attack : {{pokemon.stats[3].base_stat}}
+        Special Defense : {{pokemon.stats[4].base_stat}}
+        Speed : {{pokemon.stats[5].base_stat}}
+    </div>
 </div>
