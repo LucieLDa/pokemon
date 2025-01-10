@@ -1,5 +1,7 @@
-<div *ngIf="allDataFetched">
-  <h1>Pokedex</h1>
+<div class="main-content">
+  <div class="title">
+    <h1>Pokedex</h1>
+  </div>
   <mat-paginator
     [pageIndex]="currentPage"
     [length]="totalItems"
@@ -8,7 +10,7 @@
     [pageSizeOptions]="pageSizeOptions"
     (page)="onPageChange($event)"
   ></mat-paginator>
-  <ul>
+  <ul *ngIf="allDataFetched">
     <li *ngFor="let pokemon of currentPokemonToShow">
       <app-pokemon-box [pokemon]="pokemon.pokemon"></app-pokemon-box>
     </li>

@@ -1,0 +1,6 @@
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    min-height: calc(100vh - var(--navbar-height));
+}

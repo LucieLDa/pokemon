@@ -17,6 +17,7 @@
     --dark: #705746;
     --steel: #B7B7CE;
     --fairy: #D685AD;
+    --navbar-height: 52px;
 }
 
 * {
@@ -40,6 +41,10 @@ img {
 
 p, h1, h2, h3, h4, h5, h6 {
     margin: 0 !important;
+}
+
+body {
+    background-color: brown;
 }
 
 /* Types color */
