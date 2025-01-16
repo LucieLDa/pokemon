@@ -18,7 +18,7 @@ export interface Pokemon {
     sprites: Sprites;
     types: Types[];
     stats: Stat[];
-    abilities: Ability[];
+    abilities: AbilityResult[];
 }
 
 export interface PokemonSpecies {
@@ -50,6 +50,18 @@ export interface Stat {
     base_stat: Number;
 }
 
+export interface AbilityResult {
+    is_hidden: boolean;
+    slot: number;
+    ability: AbilityLink;
+}
+
+export interface AbilityLink {
+    name: string;
+    url: string;
+}
+
 export interface Ability {
-    name: String;
+    name: string;
+    
 }

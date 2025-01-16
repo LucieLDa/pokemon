@@ -18,4 +18,9 @@
         Special Defense : {{pokemon.stats[4].base_stat}}
         Speed : {{pokemon.stats[5].base_stat}}
     </div>
+    <ul>
+        <li *ngFor="let ability of pokemon.abilities">
+            <app-ability-info-box [abilityLink]="ability.ability.url"></app-ability-info-box>
+        </li>
+    </ul>
 </div>
