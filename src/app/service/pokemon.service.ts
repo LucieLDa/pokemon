@@ -61,12 +61,20 @@ export class PokemonService {
       .pipe(catchError(this.handleError<PokemonSpecies>('getPokemonById')));
   }
 
-  //Get Ability by its url
+  //Get Ability by it's url
 
   getAbilityByUrl(url: string): Observable<Ability>{
     return this.http
       .get<Ability>(url)
       .pipe(catchError(this.handleError<Ability>('getAbilityByUrl')));
+  }
+
+  //Get Evolution chain by it's url
+
+  getEvolutionChainByUrl(url: string): Observable<any>{
+    return this.http
+      .get<any>(url)
+      .pipe(catchError(this.handleError<any>('getEvolutionChainByUrl')));
   }
 
   /**

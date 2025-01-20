@@ -1,0 +1,12 @@
+<div>
+    <ul>
+        <li *ngFor="let pokemon of evoChain">
+            {{pokemon.species_name}}
+            {{pokemon.min_level}}
+            {{pokemon.trigger_name}}
+            @if (pokemon.item !== null) {
+                {{pokemon.item.name}}
+            }  
+        </li>
+    </ul>
+</div>

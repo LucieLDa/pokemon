@@ -25,6 +25,9 @@ export interface PokemonSpecies {
     id: number;
     name: String;
     varieties: Variety[];
+    evolution_chain: {
+        url:string
+    };
 }
 
 export interface Variety {
@@ -64,4 +67,14 @@ export interface AbilityLink {
 export interface Ability {
     name: string;
     
+}
+
+export interface EvoChain {
+    species_name : string;
+    min_level : number;
+    trigger_name : null | string;
+    item : {
+        name : string;
+        url : string;
+    };
 }

@@ -1,6 +1,7 @@
 <div *ngIf="pokemonSpecies !== undefined">
     <h1>{{pokemonSpecies.name}}</h1>
     <p>This page is under construction</p>
+    <app-evolution-chain [evolutionUrl]="pokemonSpecies.evolution_chain.url"></app-evolution-chain>
     <mat-tab-group *ngIf="allDataFetched">
         <mat-tab *ngFor="let pokemon of pokemonSpecies.varieties">
             <ng-template mat-tab-label class="tab-label">
