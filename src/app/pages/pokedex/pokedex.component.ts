@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { PokemonBoxComponent } from '../../components/pokemon-box/pokemon-box.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LocalService } from '../../service/local.service';
 
 @Component({
   selector: 'app-pokedex',
@@ -26,7 +27,17 @@ export class PokedexComponent {
   totalItems: number = 1000;
   pageSizeOptions = [10, 30, 50, 100];
 
+  constructor(private localStorage: LocalService) {}
+
   ngOnInit() : void {
+    if(this.localStorage.getData('pokedexPage')){
+      this.currentPage = Number(this.localStorage.getData('pokedexPage'));
+    }
+
+    if(this.localStorage.getData('pokedexItemPerPage')){
+      this.itemsPerPage = Number(this.localStorage.getData('pokedexItemPerPage'));
+    }
+
     this.fetchData();
   }
 
@@ -57,7 +68,9 @@ export class PokedexComponent {
 
   onPageChange(e: any): void {
     this.currentPage = e.pageIndex;
+    this.localStorage.saveData('pokedexPage', e.pageIndex);
     this.itemsPerPage = e.pageSize;
+    this.localStorage.saveData('pokedexItemPerPage', e.pageSize);
     this.currentPokemonToShow = this.pokeAPI.results.slice(this.currentPage * this.itemsPerPage, this.currentPage * this.itemsPerPage + this.itemsPerPage);
   }
 }
