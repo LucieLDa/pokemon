@@ -77,4 +77,5 @@ export interface EvoChain {
         name : string;
         url : string;
     };
+    evolves_to ?: null | EvoChain[];
 }

@@ -1,12 +1,5 @@
-<div>
-    <ul>
-        <li *ngFor="let pokemon of evoChain">
-            {{pokemon.species_name}}
-            {{pokemon.min_level}}
-            {{pokemon.trigger_name}}
-            @if (pokemon.item !== null) {
-                {{pokemon.item.name}}
-            }  
-        </li>
-    </ul>
+<br>
+<div *ngIf="evoChain != null">
+    <app-evolution-chain-link [evoChain]="evoChain"></app-evolution-chain-link>
 </div>
+

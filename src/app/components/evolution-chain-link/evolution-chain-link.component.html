@@ -1,0 +1,15 @@
+<div class="link-box">
+    {{evoChain.species_name}}
+    <ul *ngIf="evoChain.evolves_to!.length > 0">
+        <li *ngFor="let pokemon of evoChain.evolves_to">
+            v
+            {{pokemon.min_level}}
+            {{pokemon.trigger_name}}
+            @if (pokemon.item !== null) {
+                {{pokemon.item.name}}
+            }
+            <br>
+            <app-evolution-chain-link [evoChain]="pokemon"></app-evolution-chain-link>       
+        </li>
+    </ul>
+</div>
