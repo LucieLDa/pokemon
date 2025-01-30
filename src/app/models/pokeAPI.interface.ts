@@ -56,17 +56,17 @@ export interface Stat {
 export interface AbilityResult {
     is_hidden: boolean;
     slot: number;
-    ability: AbilityLink;
-}
-
-export interface AbilityLink {
-    name: string;
-    url: string;
+    ability: {name: string, url: string};
 }
 
 export interface Ability {
     name: string;
-    
+    effect_entries: {effect: string, language: LanguageResult}[];
+}
+
+export interface LanguageResult {
+    name: string;
+    url: string;
 }
 
 export interface EvoChain {
