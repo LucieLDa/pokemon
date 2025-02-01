@@ -1,8 +1,4 @@
 <div *ngIf="allDataFetched">
     {{ability.name}}
-    <div *ngFor="let text of ability.effect_entries">
-        <p *ngIf="text.language.name=='en'">
-            {{text.effect}}
-        </p>
-    </div>
+    {{findAbilityDescription()}}
 </div>

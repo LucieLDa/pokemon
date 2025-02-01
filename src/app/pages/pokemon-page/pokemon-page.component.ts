@@ -50,4 +50,25 @@ export class PokemonPageComponent {
       })
     });
   }
+
+  //Get all games where the pokemon has a flavor text entry
+  getAllVersionFlavorText() : string[]{
+    let result : string[] = [];
+    this.pokemonSpecies.flavor_text_entries.forEach((text) =>{
+      if(!result.includes(text.version.name)){
+        result.push(text.version.name);
+      }
+    });
+    return result;
+  }
+
+  //Find the correct flavortext for a game version
+  findFlavorText(version: string) : string | undefined {
+    return this.pokemonSpecies.flavor_text_entries.find(x => x.language.name=='en' && x.version.name==version)?.flavor_text;
+  }
+
+  //Find the english form description
+  findFormDescription() : string | undefined {
+    return this.pokemonSpecies.form_descriptions.find(x => x.language.name=='en')?.description;
+  }
 }

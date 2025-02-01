@@ -28,6 +28,8 @@ export interface PokemonSpecies {
     evolution_chain: {
         url:string
     };
+    form_descriptions: {description: string, language: LanguageResult}[];
+    flavor_text_entries: {flavor_text: string, language: LanguageResult, version: {name: string, url: string}}[];
 }
 
 export interface Variety {
@@ -62,6 +64,7 @@ export interface AbilityResult {
 export interface Ability {
     name: string;
     effect_entries: {effect: string, language: LanguageResult}[];
+    flavor_text_entries: {flavor_text: string, language: LanguageResult}[];
 }
 
 export interface LanguageResult {

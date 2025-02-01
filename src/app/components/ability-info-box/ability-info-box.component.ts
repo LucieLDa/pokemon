@@ -24,4 +24,9 @@ export class AbilityInfoBoxComponent {
       this.allDataFetched = true;
     });
   }
+
+  //Find the english description of the ability
+  findAbilityDescription() : string | undefined {
+    return this.ability.flavor_text_entries.find(x => x.language.name=='en')?.flavor_text;
+  }
 }
