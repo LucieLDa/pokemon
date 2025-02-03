@@ -1,3 +1,33 @@
+.main-page {
+    padding: 8px;
+}
+
+h1 {
+    font-size: 40px;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-align: center;
+}
+
+.description {
+    margin-top: 16px;
+    border-style: outset;
+    border-radius: 10px;
+    border-color: rgb(230, 79, 79);
+}
+
+.description-tab-content {
+    padding: 8px;
+}
+
+h2 {
+    text-transform: capitalize;
+}
+
+.tab-label-image {
+    margin-left: 4px;
+}
+
 img {
     height: 50px;
     width: 50px;
