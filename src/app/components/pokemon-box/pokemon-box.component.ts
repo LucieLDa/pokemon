@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [RouterLink, CommonModule],
   templateUrl: './pokemon-box.component.html',
-  styleUrl: './pokemon-box.component.css'
+  styleUrl: './pokemon-box.component.scss'
 })
 export class PokemonBoxComponent {
   @Input()

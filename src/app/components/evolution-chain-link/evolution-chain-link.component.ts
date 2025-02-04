@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './evolution-chain-link.component.html',
-  styleUrl: './evolution-chain-link.component.css'
+  styleUrl: './evolution-chain-link.component.scss'
 })
 export class EvolutionChainLinkComponent {
   @Input()

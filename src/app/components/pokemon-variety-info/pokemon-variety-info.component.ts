@@ -8,7 +8,7 @@ import { AbilityInfoBoxComponent } from '../ability-info-box/ability-info-box.co
   standalone: true,
   imports: [CommonModule, AbilityInfoBoxComponent],
   templateUrl: './pokemon-variety-info.component.html',
-  styleUrl: './pokemon-variety-info.component.css'
+  styleUrl: './pokemon-variety-info.component.scss'
 })
 export class PokemonVarietyInfoComponent {
   @Input()

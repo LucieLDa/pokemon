@@ -12,7 +12,7 @@ import { EvolutionChainComponent } from '../../components/evolution-chain/evolut
   standalone: true,
   imports: [CommonModule, MatTabsModule, PokemonVarietyInfoComponent, EvolutionChainComponent],
   templateUrl: './pokemon-page.component.html',
-  styleUrl: './pokemon-page.component.css'
+  styleUrl: './pokemon-page.component.scss'
 })
 export class PokemonPageComponent {
   //This page shows all the info of a pokemon species

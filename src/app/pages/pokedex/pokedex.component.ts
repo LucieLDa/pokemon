@@ -12,7 +12,7 @@ import { LocalService } from '../../service/local.service';
   standalone: true,
   imports: [CommonModule, PokemonBoxComponent, MatPaginatorModule, MatProgressSpinnerModule],
   templateUrl: './pokedex.component.html',
-  styleUrl: './pokedex.component.css'
+  styleUrl: './pokedex.component.scss'
 })
 export class PokedexComponent {
   //API Data

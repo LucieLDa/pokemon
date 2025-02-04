@@ -9,7 +9,7 @@ import { EvolutionChainLinkComponent } from '../evolution-chain-link/evolution-c
   standalone: true,
   imports: [CommonModule, EvolutionChainLinkComponent],
   templateUrl: './evolution-chain.component.html',
-  styleUrl: './evolution-chain.component.css'
+  styleUrl: './evolution-chain.component.scss'
 })
 export class EvolutionChainComponent {
   @Input()

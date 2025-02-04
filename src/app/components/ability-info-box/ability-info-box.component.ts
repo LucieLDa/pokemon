@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './ability-info-box.component.html',
-  styleUrl: './ability-info-box.component.css'
+  styleUrl: './ability-info-box.component.scss'
 })
 export class AbilityInfoBoxComponent {
   @Input()
