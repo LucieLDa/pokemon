@@ -20,8 +20,12 @@ h1 {
     padding: 8px;
 }
 
-h2 {
-    text-transform: capitalize;
+.version-tab-label, .variety-tab-label {
+    text-transform: capitalize;  
+}
+
+.variety-tab-label {
+    font-size: 18px;
 }
 
 .tab-label-image {

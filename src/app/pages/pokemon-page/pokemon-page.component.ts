@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, ViewEncapsulation } from '@angular/core';
 import { Pokemon, PokemonSpecies, Variety } from '../../models/pokeAPI.interface';
 import { PokemonService } from '../../service/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';

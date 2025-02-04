@@ -1,26 +1,55 @@
 @use "./import" as *;
+@use '@angular/material' as mat;
+@include mat.core();
 
-:root {
-    --normal: #A8A77A;
-    --fire: #EE8130;
-    --water: #6390F0;
-    --electric: #F7D02C;
-    --grass: #7AC74C;
-    --ice: #96D9D6;
-    --fighting: #C22E28;
-    --poison: #A33EA1;
-    --ground: #E2BF65;
-    --flying: #A98FF3;
-    --psychic: #F95587;
-    --bug: #A6B91A;
-    --rock: #B6A136;
-    --ghost: #735797;
-    --dragon: #6F35FC;
-    --dark: #705746;
-    --steel: #B7B7CE;
-    --fairy: #D685AD;
-    --navbar-height: 52px;
-}
+$custom-primary-palette: (
+  50: #FFEBEE,
+  100: #FFCDD2,
+  200: #EF9A9A,
+  300: #E57373,
+  400: #EF5350,
+  500: #F44336,
+  600: #E53935,
+  700: #D32F2F,
+  800: #C62828,
+  900: #B71C1C,
+  A100: #FF8A80,
+  A200: #FF5252,
+  A400: #FF1744,
+  A700: #D50000,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
+);
+
+$custom-primary: mat.define-palette($custom-primary-palette);
+$custom-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$custom-warn: mat.define-palette(mat.$yellow-palette);
+
+$custom-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $custom-primary,
+      accent: $custom-accent,
+      warn: $custom-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($custom-theme);
 
 * {
     margin: 0;
@@ -46,79 +75,84 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-    background-color: brown;
+    background-color: $main-background-color;
 }
+
+//Angular material
+
 
 /* Types color */
 
 .normal {
-    background-color: var(--normal);
+    background-color: $normal;
 }
 
 .fire {
-    background-color: var(--fire);
+    background-color: $fire;
 }
 
 .water {
-    background-color: var(--water);
+    background-color: $water;
 }
 
 .electric {
-    background-color: var(--electric);
+    background-color: $electric;
 }
 
 .grass {
-    background-color: var(--grass);
+    background-color: $grass;
 }
 
 .ice {
-    background-color: var(--ice);
+    background-color: $ice;
 }
 
 .fighting {
-    background-color: var(--fighting);
+    background-color: $fighting;
 }
 
 .poison {
-    background-color: var(--poison);
+    background-color: $poison;
 }
 
 .ground {
-    background-color: var(--ground);
+    background-color: $ground;
 }
 
 .flying {
-    background-color: var(--flying);
+    background-color: $flying;
 }
 
 .psychic {
-    background-color: var(--psychic);
+    background-color: $psychic;
 }
 
 .bug {
-    background-color: var(--bug);
+    background-color: $bug;
 }
 
 .rock {
-    background-color: var(--rock);
+    background-color: $rock;
 }
 
 .ghost {
-    background-color: var(--ghost);
+    background-color: $ghost;
 }
 
 .dragon {
-    background-color: var(--dragon);
+    background-color: $dragon;
 }
 
 .dark {
-    background-color: var(--dark);
+    background-color: $dark;
 }
 
 .steel {
-    background-color: var(--steel);
+    background-color: $steel;
 }
 
 .fairy {
-    background-color: var(--fairy);
+    background-color: $fairy;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
