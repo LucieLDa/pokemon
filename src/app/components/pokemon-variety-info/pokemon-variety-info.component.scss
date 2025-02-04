@@ -1,3 +1,7 @@
+h2 {
+    text-transform: capitalize;
+}
+
 img {
     height: 100px;
     width: 100px;
@@ -6,9 +10,14 @@ img {
 .pokemon-types {
     text-transform: capitalize;
     display: flex;
+    gap: 4px;
 }
 
 .type {
     padding: 3px 10px;
     border-radius: 5px;
+}
+
+.ability-list li{
+    margin: 4px;
 }

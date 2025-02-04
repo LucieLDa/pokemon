@@ -11,14 +11,14 @@
         </ul>
     </div>
     <div class="pokemon-stat">
-        HP : {{pokemon.stats[0].base_stat}}
-        Attack : {{pokemon.stats[1].base_stat}}
-        Defense : {{pokemon.stats[2].base_stat}}
-        Special Attack : {{pokemon.stats[3].base_stat}}
-        Special Defense : {{pokemon.stats[4].base_stat}}
-        Speed : {{pokemon.stats[5].base_stat}}
+        HP : {{pokemon.stats[0].base_stat}}<br>
+        Attack : {{pokemon.stats[1].base_stat}}<br>
+        Defense : {{pokemon.stats[2].base_stat}}<br>
+        Special Attack : {{pokemon.stats[3].base_stat}}<br>
+        Special Defense : {{pokemon.stats[4].base_stat}}<br>
+        Speed : {{pokemon.stats[5].base_stat}}<br>
     </div>
-    <ul>
+    <ul class="ability-list">
         <li *ngFor="let ability of pokemon.abilities">
             <app-ability-info-box [abilityLink]="ability.ability.url"></app-ability-info-box>
         </li>

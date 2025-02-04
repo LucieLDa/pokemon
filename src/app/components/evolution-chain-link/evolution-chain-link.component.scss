@@ -1,6 +1,16 @@
-.link-box{
+.link-box {
     max-width: fit-content;
     margin: 0 auto;
+}
+
+.pokemon-link-image{
+    height: 100px;
+    width: 100px;
+    background-color: #bbb;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 ul {

@@ -1,3 +1,5 @@
+@use "../../../import" as *;
+
 .main-page {
     padding: 8px;
 }
@@ -13,7 +15,7 @@ h1 {
     margin-top: 16px;
     border-style: outset;
     border-radius: 10px;
-    border-color: rgb(230, 79, 79);
+    border-color: $main-color;
 }
 
 .description-tab-content {
