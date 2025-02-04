@@ -6,20 +6,47 @@ nav {
     height: $navbar-height;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 10;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
 nav ul{
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 nav ul li {
     text-align: center;
-    font-size: 1.5rem;
 }
 
 nav ul li a {
     display: block;
-    padding: 1rem;
+    padding: 0.6rem 0.3rem;
+    position: relative;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+li a:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: $main-color;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+}
+
+li a:hover:before{
+    width: 100%;
+}
+
+li a:before{
+    left: 50%;
+    transform: translateX(-50%);
 }

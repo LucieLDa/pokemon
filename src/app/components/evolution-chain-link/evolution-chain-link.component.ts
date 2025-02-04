@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-evolution-chain-link',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [CommonModule],
   templateUrl: './evolution-chain-link.component.html',
   styleUrl: './evolution-chain-link.component.scss'
 })
