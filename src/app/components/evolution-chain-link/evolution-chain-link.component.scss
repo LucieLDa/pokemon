@@ -1,16 +1,29 @@
+@use "../../../import" as *;
+
 .link-box {
     max-width: fit-content;
     margin: 0 auto;
 }
 
-.pokemon-link-image{
-    height: 100px;
-    width: 100px;
-    background-color: #bbb;
+.pokemon-link-image {
+    height: 120px;
+    width: 120px;
+    background-color: lightgray;
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
     display: table-cell;
+    border: 4px ridge $main-color;
+    opacity: 0.7;
+}
+
+.on-this-page {
+    opacity: 1;
+}
+
+.pokemon-link-image:hover {
+    opacity: 1;
+    transition: .5s ease;
 }
 
 ul {

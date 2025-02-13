@@ -1,7 +1,7 @@
 <div class="link-box">
     <a href="/pokemon/{{evoChain.species_name}}">
-        <div class="pokemon-link-image">
-            {{evoChain.species_name}}
+        <div class="pokemon-link-image" [ngClass]="{'on-this-page': onThisPage}">
+            <img [src]="pokemonImage" [alt]="evoChain.species_name">
         </div>
     </a>
     <ul *ngIf="evoChain.evolves_to!.length > 0">

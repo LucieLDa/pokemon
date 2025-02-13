@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { EvoChain } from '../../models/pokeAPI.interface';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { PokemonService } from '../../service/pokemon.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-evolution-chain-link',
@@ -13,4 +14,17 @@ import { RouterLink } from '@angular/router';
 export class EvolutionChainLinkComponent {
   @Input()
   evoChain !: EvoChain;
+
+  private pokedexService = inject(PokemonService);
+  pokemonImage : String = "";
+  onThisPage : boolean = false;
+
+  constructor(private route: ActivatedRoute, private router: Router){}
+
+  ngOnInit() : void {
+    this.onThisPage = this.route.snapshot.paramMap.get('id')==this.evoChain.species_name;
+    this.pokedexService.getPokemonById(this.evoChain.species_id).subscribe(data => {
+      this.pokemonImage = data.sprites.front_default;
+    });
+  }
 }

@@ -74,6 +74,7 @@ export interface LanguageResult {
 
 export interface EvoChain {
     species_name : string;
+    species_id : number;
     min_level : number;
     trigger_name : null | string;
     item : {

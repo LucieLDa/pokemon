@@ -29,6 +29,7 @@ export class EvolutionChainComponent {
     var evoDetails = evoData['evolution_details'][0];
     let result : EvoChain = {
       "species_name": evoData.species.name,
+      "species_id": Number(evoData.species.url.split('/').slice(-2,-1)[0]),
       "min_level": !evoDetails ? 1 : evoDetails.min_level,
       "trigger_name": !evoDetails ? null : evoDetails.trigger.name,
       "item": !evoDetails ? null : evoDetails.item,
