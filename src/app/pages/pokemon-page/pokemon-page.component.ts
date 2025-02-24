@@ -1,16 +1,17 @@
-import { Component, inject, Input, ViewEncapsulation } from '@angular/core';
-import { Pokemon, PokemonSpecies, Variety } from '../../models/pokeAPI.interface';
+import { Component, inject } from '@angular/core';
+import { PokemonSpecies, Variety } from '../../models/pokeAPI.interface';
 import { PokemonService } from '../../service/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import {MatTabsModule} from '@angular/material/tabs'; 
+import { MatTabsModule } from '@angular/material/tabs'; 
 import { PokemonVarietyInfoComponent } from '../../components/pokemon-variety-info/pokemon-variety-info.component';
 import { EvolutionChainComponent } from '../../components/evolution-chain/evolution-chain.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pokemon-page',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, PokemonVarietyInfoComponent, EvolutionChainComponent],
+  imports: [FormsModule, CommonModule, MatTabsModule, PokemonVarietyInfoComponent, EvolutionChainComponent],
   templateUrl: './pokemon-page.component.html',
   styleUrl: './pokemon-page.component.scss'
 })
@@ -20,6 +21,9 @@ export class PokemonPageComponent {
   pokemonSpecies !: PokemonSpecies;
   selectedId !: any;
   allDataFetched: boolean = false;
+  selectedPokemonVariety !: Variety;
+  testOption : string[] = ["la","lo","li"];
+  testSelect : string = "la";
 
   constructor(private route: ActivatedRoute, private router: Router){}
 
@@ -30,6 +34,7 @@ export class PokemonPageComponent {
       if(findPokemon !== undefined){
         this.pokemonSpecies = findPokemon;
         this.loadPokemonToVariety();
+        this.selectedPokemonVariety = this.pokemonSpecies.varieties[0];
       }else{
         this.router.navigate(['']);
       }
@@ -70,5 +75,9 @@ export class PokemonPageComponent {
   //Find the english form description
   findFormDescription() : string | undefined {
     return this.pokemonSpecies.form_descriptions.find(x => x.language.name=='en')?.description;
+  }
+
+  onChangeSelectVariety() : void {
+    //TODO
   }
 }

@@ -1,5 +1,13 @@
 <div class="main-page" *ngIf="pokemonSpecies !== undefined">
     <h1>{{pokemonSpecies.name}}</h1>
+    <form class="variety-form" *ngIf="allDataFetched && pokemonSpecies.varieties.length > 1">
+        <select id="variety-select" name="pokemonVariety" [(ngModel)]="selectedPokemonVariety" (ngModelChange)="onChangeSelectVariety()">
+            <option *ngFor="let pokemonVariety of pokemonSpecies.varieties" [ngValue]="pokemonVariety" >
+                {{pokemonVariety.pokemon.name}}
+            </option>
+        </select>
+    </form>
+    {{selectedPokemonVariety.pokemonInfo.name}}
     <div class="description">
         <mat-tab-group *ngIf="allDataFetched">
             <mat-tab *ngFor="let version of getAllVersionFlavorText()">
