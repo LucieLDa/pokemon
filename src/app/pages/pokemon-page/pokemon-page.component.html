@@ -1,15 +1,14 @@
-<div class="main-page" *ngIf="pokemonSpecies !== undefined">
+<div class="main-page" *ngIf="pokemonSpecies !== undefined && allDataFetched">
     <h1>{{pokemonSpecies.name}}</h1>
-    <form class="variety-form" *ngIf="allDataFetched && pokemonSpecies.varieties.length > 1">
-        <select id="variety-select" name="pokemonVariety" [(ngModel)]="selectedPokemonVariety" (ngModelChange)="onChangeSelectVariety()">
+    <form class="variety-form" *ngIf="pokemonSpecies.varieties.length > 1">
+        <select id="variety-select" name="pokemonVariety" [(ngModel)]="selectedPokemonVariety">
             <option *ngFor="let pokemonVariety of pokemonSpecies.varieties" [ngValue]="pokemonVariety" >
                 {{pokemonVariety.pokemon.name}}
             </option>
         </select>
     </form>
-    {{selectedPokemonVariety.pokemonInfo.name}}
     <div class="description">
-        <mat-tab-group *ngIf="allDataFetched">
+        <mat-tab-group>
             <mat-tab *ngFor="let version of getAllVersionFlavorText()">
                 <ng-template mat-tab-label class="tab-label">
                     <span class="version-tab-label">{{version}}</span>
@@ -21,13 +20,5 @@
         </mat-tab-group>
     </div>
     <app-evolution-chain [evolutionUrl]="pokemonSpecies.evolution_chain.url"></app-evolution-chain>
-    <mat-tab-group *ngIf="allDataFetched">
-        <mat-tab *ngFor="let pokemon of pokemonSpecies.varieties">
-            <ng-template mat-tab-label class="tab-label">
-                <span class="variety-tab-label">{{pokemon.pokemon.name}}</span>
-                <img class="tab-label-image" [src]="pokemon.pokemonInfo.sprites.front_default" alt="">
-            </ng-template>
-            <app-pokemon-variety-info [pokemon]="pokemon.pokemonInfo"></app-pokemon-variety-info>
-        </mat-tab>
-    </mat-tab-group>
+    <app-pokemon-variety-info [pokemon]="selectedPokemonVariety.pokemonInfo"></app-pokemon-variety-info>
 </div>

@@ -76,8 +76,4 @@ export class PokemonPageComponent {
   findFormDescription() : string | undefined {
     return this.pokemonSpecies.form_descriptions.find(x => x.language.name=='en')?.description;
   }
-
-  onChangeSelectVariety() : void {
-    //TODO
-  }
 }
