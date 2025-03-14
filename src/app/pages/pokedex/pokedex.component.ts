@@ -3,14 +3,15 @@ import { PokemonService } from '../../service/pokemon.service';
 import { PokeAPI, Pokemon, Results } from '../../models/pokeAPI.interface';
 import { CommonModule } from '@angular/common';
 import { PokemonBoxComponent } from '../../components/pokemon-box/pokemon-box.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LocalService } from '../../service/local.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pokedex',
   standalone: true,
-  imports: [CommonModule, PokemonBoxComponent, MatPaginatorModule, MatProgressSpinnerModule],
+  imports: [FormsModule, CommonModule, PokemonBoxComponent, MatPaginatorModule, MatProgressSpinnerModule],
   templateUrl: './pokedex.component.html',
   styleUrl: './pokedex.component.scss'
 })
@@ -18,6 +19,7 @@ export class PokedexComponent {
   //API Data
   private pokedexService = inject(PokemonService);
   pokeAPI : PokeAPI = {count : 0, next : "", results : []};
+  filteredPokemonList : Results[] = [];
   currentPokemonToShow : Results[] = [];
   allDataFetched: boolean = false;
 
@@ -64,13 +66,22 @@ export class PokedexComponent {
         }
       });
     });
+    this.filteredPokemonList = this.pokeAPI.results;
   }
 
-  onPageChange(e: any): void {
+  onPageChange(e: any) : void {
     this.currentPage = e.pageIndex;
     this.localStorage.saveData('pokedexPage', e.pageIndex);
     this.itemsPerPage = e.pageSize;
     this.localStorage.saveData('pokedexItemPerPage', e.pageSize);
-    this.currentPokemonToShow = this.pokeAPI.results.slice(this.currentPage * this.itemsPerPage, this.currentPage * this.itemsPerPage + this.itemsPerPage);
+    this.currentPokemonToShow = this.filteredPokemonList.slice(this.currentPage * this.itemsPerPage, this.currentPage * this.itemsPerPage + this.itemsPerPage);
+  }
+
+  filterResults(searchInput : String) : void {
+    this.filteredPokemonList = this.pokeAPI.results.filter(
+      pokemon => pokemon.name.toLocaleLowerCase().includes(searchInput.toLowerCase())
+    );
+    this.currentPokemonToShow = this.filteredPokemonList.slice(this.currentPage * this.itemsPerPage, this.currentPage * this.itemsPerPage + this.itemsPerPage);
+    this.totalItems = this.filteredPokemonList.length;
   }
 }

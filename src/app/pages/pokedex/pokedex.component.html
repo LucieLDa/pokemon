@@ -2,6 +2,10 @@
   <div class="title">
     <h1>Pokedex</h1>
   </div>
+  <form>
+    <input type="text" placeholder="Filter by name" #filter>
+    <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+  </form>
   <mat-paginator
     [pageIndex]="currentPage"
     [length]="totalItems"
