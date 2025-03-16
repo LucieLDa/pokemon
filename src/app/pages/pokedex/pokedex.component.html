@@ -3,8 +3,16 @@
     <h1>Pokedex</h1>
   </div>
   <form>
-    <input type="text" placeholder="Filter by name" #filter>
-    <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+    <input type="text" placeholder="Filter by name" #filterName>
+    <select #filterType1>
+      <option value="">Type 1</option>
+      <option *ngFor="let type of typeList" [value]="type">{{type}}</option>
+    </select>
+    <select #filterType2>
+      <option value="">Type 2</option>
+      <option *ngFor="let type of typeList" [value]="type">{{type}}</option>
+    </select>
+    <button class="primary" type="button" (click)="filterResults(filterName.value, filterType1.value, filterType2.value)">Search</button>
   </form>
   <mat-paginator
     [pageIndex]="currentPage"

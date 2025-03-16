@@ -21,7 +21,9 @@ export class PokedexComponent {
   pokeAPI : PokeAPI = {count : 0, next : "", results : []};
   filteredPokemonList : Results[] = [];
   currentPokemonToShow : Results[] = [];
-  allDataFetched: boolean = false;
+  allDataFetched : boolean = false;
+  //TODO : Get the typelist from pokeAPI
+  typeList : String[] = ["normal", "fire", "water", "electric", "grass", "ice", "fighting", "poison", "ground", "flying", "psychic", "bug", "rock", "ghost", "dragon", "dark", "steel", "fairy"];
 
   //Pagination
   currentPage: number = 0;
@@ -77,10 +79,20 @@ export class PokedexComponent {
     this.currentPokemonToShow = this.filteredPokemonList.slice(this.currentPage * this.itemsPerPage, this.currentPage * this.itemsPerPage + this.itemsPerPage);
   }
 
-  filterResults(searchInput : String) : void {
+  filterResults(searchInput : String, type1Input : String, type2Input : String) : void {
     this.filteredPokemonList = this.pokeAPI.results.filter(
       pokemon => pokemon.name.toLocaleLowerCase().includes(searchInput.toLowerCase())
     );
+    if(type1Input !== "") {
+      this.filteredPokemonList = this.filteredPokemonList.filter(
+        pokemon => pokemon.pokemon.types.find(t => t.type.name == type1Input)
+      );
+      if(type2Input !== "") {
+        this.filteredPokemonList = this.filteredPokemonList.filter(
+          pokemon => pokemon.pokemon.types.find(t => t.type.name == type2Input)
+        );
+      }
+    }
     this.currentPokemonToShow = this.filteredPokemonList.slice(this.currentPage * this.itemsPerPage, this.currentPage * this.itemsPerPage + this.itemsPerPage);
     this.totalItems = this.filteredPokemonList.length;
   }

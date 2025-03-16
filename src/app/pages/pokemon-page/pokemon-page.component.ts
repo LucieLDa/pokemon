@@ -22,8 +22,6 @@ export class PokemonPageComponent {
   selectedId !: any;
   allDataFetched: boolean = false;
   selectedPokemonVariety !: Variety;
-  testOption : string[] = ["la","lo","li"];
-  testSelect : string = "la";
 
   constructor(private route: ActivatedRoute, private router: Router){}
 
